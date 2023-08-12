@@ -20,6 +20,26 @@
         {
             color: black;
         }
+        .center
+        {
+            margin: auto;
+            width: 40%;
+            text-align: center;
+            margin-top: 30px;
+            border: 3px solid white;
+        }
+        .category
+        {
+            border: 1px solid blue;
+            color: green;
+            font-size: 20px;
+        }
+        .action 
+        {
+            border: 1px solid yellow;
+            color: red;
+            font-size: 20px
+        }
     </style>
   </head>
   <body>
@@ -49,6 +69,18 @@
                     <input type="submit" class="btn btn-primary" name="submit" value="Add Category">
                  </form>
             </div>
+            <table class="center">
+                <tr>
+                    <td class="category">Category Name</td>
+                    <td class="action">Action</td>
+                </tr>
+                @foreach($data as $data)
+                <tr>
+                    <td>{{ $data->category_name }}</td>
+                    <td><a onclick="return confirm('Are you Sure to Delete this?')" class="btn btn-danger" href="{{ url('delete_category',$data->id) }}">Delete</a></td>
+                </tr>
+                @endforeach
+            </table>
 
           </div>
         </div>
